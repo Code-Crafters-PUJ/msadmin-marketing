@@ -24,6 +24,16 @@ app.get('/api/history-users', (req: Request, res: Response): void => {
   res.json({ history: mockData.historialDudas })
 })
 
+app.post('/api/request/manage', (req: Request, res: Response): void => {
+  if (!req.body.adressee || !req.body.subject || !req.body.description) {
+    res
+      .status(400)
+      .json({ message: 'Adressee, subject and description are required' })
+  }
+
+  res.json({ message: 'Request successfuly registered' })
+})
+
 app.listen(PORT, (): void => {
   console.log(`Server is running on http://localhost:${PORT}`)
 })

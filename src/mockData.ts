@@ -2,9 +2,6 @@ const mockData = {
   emails: {
     visualizacion: 0.65,
   },
-  usuarios: {
-    visualizacion: 243,
-  },
   landingPage: {
     users: [
       { name: 'Juan Pérez', email: 'juan@example.com' },

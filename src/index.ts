@@ -11,12 +11,12 @@ app.use(cors())
 app.get('/api/emails/visualization', (req: Request, res: Response): void => {
   res.json({ percentage: mockData.emails.visualizacion })
 })
-app.get('/api/users/visualization', (req: Request, res: Response): void => {
-  res.json({ number: mockData.usuarios.visualizacion })
-})
 
-app.get('/api/users-landing', (req: Request, res: Response): void => {
-  res.json({ users: mockData.landingPage.users })
+app.get('/api/users/landing', (req: Request, res: Response): void => {
+  res.json({
+    users: mockData.landingPage.users,
+    count: mockData.landingPage.users.length,
+  })
 })
 
 app.get('/api/formas-de-enterarse', (req: Request, res: Response): void => {

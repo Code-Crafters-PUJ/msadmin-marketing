@@ -1,16 +1,24 @@
 import cors from 'cors'
 import express, { Request, Response } from 'express'
 
+import { PORT } from './config/environment'
+import {
+  validateSupportOrAdminRole,
+  validateSupportRole,
+} from './middlewares/validate-role'
 import mockData from './mockData'
 
 const app = express()
-const PORT = 3000
 
 app.use(cors())
 
-app.get('/api/emails/visualization', (req: Request, res: Response): void => {
-  res.json({ percentage: mockData.emails.visualizacion })
-})
+app.get(
+  '/api/emails/visualization',
+  [validateSupportOrAdminRole],
+  (req: Request, res: Response): void => {
+    res.json({ percentage: mockData.emails.visualizacion })
+  }
+)
 
 app.get('/api/users/landing', (req: Request, res: Response): void => {
   res.json({
@@ -19,23 +27,35 @@ app.get('/api/users/landing', (req: Request, res: Response): void => {
   })
 })
 
-app.get('/api/formas-de-enterarse', (req: Request, res: Response): void => {
-  res.json({ formasDeEnterarse: mockData.formasDeEnterarse })
-})
-
-app.get('/api/history-users', (req: Request, res: Response): void => {
-  res.json({ history: mockData.historialDudas })
-})
-
-app.post('/api/request/manage', (req: Request, res: Response): void => {
-  if (!req.body.adressee || !req.body.subject || !req.body.description) {
-    res
-      .status(400)
-      .json({ message: 'Adressee, subject and description are required' })
+app.get(
+  '/api/formas-de-enterarse',
+  [validateSupportOrAdminRole],
+  (req: Request, res: Response): void => {
+    res.json({ formasDeEnterarse: mockData.formasDeEnterarse })
   }
+)
 
-  res.json({ message: 'Request successfuly registered' })
-})
+app.get(
+  '/api/history-users',
+  [validateSupportOrAdminRole],
+  (req: Request, res: Response): void => {
+    res.json({ history: mockData.historialDudas })
+  }
+)
+
+app.post(
+  '/api/request/manage',
+  [validateSupportRole],
+  (req: Request, res: Response): void => {
+    if (!req.body.adressee || !req.body.subject || !req.body.description) {
+      res
+        .status(400)
+        .json({ message: 'Adressee, subject and description are required' })
+    }
+
+    res.json({ message: 'Request successfuly registered' })
+  }
+)
 
 app.listen(PORT, (): void => {
   console.log(`Server is running on http://localhost:${PORT}`)

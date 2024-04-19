@@ -20,12 +20,16 @@ app.get(
   }
 )
 
-app.get('/api/users/landing', (req: Request, res: Response): void => {
-  res.json({
-    users: mockData.landingPage.users,
-    count: mockData.landingPage.users.length,
-  })
-})
+app.get(
+  '/api/users/landing',
+  [validateSupportOrAdminRole],
+  (req: Request, res: Response): void => {
+    res.json({
+      users: mockData.landingPage.users,
+      count: mockData.landingPage.users.length,
+    })
+  }
+)
 
 app.get(
   '/api/formas-de-enterarse',

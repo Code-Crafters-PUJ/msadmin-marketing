@@ -34,11 +34,12 @@ const mockData = {
   historialDudas: [
     {
       id: 1,
-      asunto: 'Problema con la página de inicio',
-      destinatario: 'Soporte Técnico',
-      descripcion:
-        'Cuando intento cargar la página de inicio, muestra un error 404.',
-      remitente: {
+      subject: 'Duda sobre precios',
+      company: 'Google',
+      addressee: 'Marketing',
+      description:
+        'Hola! quiero obtener más información de los precios de esta plataforma. ¡Me encanta!',
+      sender: {
         name: 'Luisa Martínez',
         email: 'luisa@example.com',
         date: '2024/20/02',
@@ -46,13 +47,28 @@ const mockData = {
     },
     {
       id: 2,
-      asunto: 'Duda sobre precios',
-      destinatario: 'Ventas',
-      descripcion: 'Quisiera saber cuáles son los precios de sus productos.',
-      remitente: {
+      subject: 'Duda sobre productos y servicios',
+      company: 'Facebook',
+      addressee: 'Marketing',
+      description:
+        'Buenas tardes, quiero recibir más información sobre sus productos y servicios, gracias.',
+      sender: {
         name: 'Pedro Rodríguez',
         email: 'pedro@example.com',
-        date: '2024/20/02',
+        date: '2023/29/10',
+      },
+    },
+    {
+      id: 3,
+      subject: 'Suscripción Gold',
+      company: 'OpenAI',
+      addressee: 'Marketing',
+      description:
+        'Hola soy de OpenAI y quiero saber más sobre la suscripción Gold',
+      sender: {
+        name: 'Samuel Hernandez',
+        email: 'SamuHer@example.com',
+        date: '2021/19/04',
       },
     },
   ],

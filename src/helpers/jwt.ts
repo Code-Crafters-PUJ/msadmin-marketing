@@ -8,7 +8,7 @@ export const hasSupportRole = (token: string): boolean => {
       role: string
     }
 
-    return decoded['role'] === 'SOPORTE'
+    return decoded['role'] === 'MARKETING'
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error('Error al verificar el token:', error.message)

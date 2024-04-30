@@ -1,6 +1,11 @@
 const mockData = {
-  emails: {
-    visualizacion: 0.65,
+  activos: [60, 90],
+  monitoreoMes: [80, 60, 25, 80, 200, 100, 110, 20, 130, 140, 40, 160],
+  monitoreoTipo: {
+    administrativo: 65,
+    ventas: 59,
+    marketing: 25,
+    soporte: 94,
   },
   landingPage: {
     users: [
@@ -26,11 +31,6 @@ const mockData = {
       { name: 'Esteban Ramírez', email: 'esteban@example.com' },
     ],
   },
-  formasDeEnterarse: [
-    'Redes Sociales',
-    'Buscadores',
-    'Recomendación de Amigos',
-  ],
   historialDudas: [
     {
       id: 1,

@@ -14,10 +14,14 @@ const app = express()
 app.use(cors())
 
 app.get(
-  '/api/emails/visualization',
+  '/api/stats',
   [validateSupportOrAdminRole],
   (req: Request, res: Response): void => {
-    res.json({ percentage: mockData.emails.visualizacion })
+    res.json({
+      activos: mockData.activos,
+      monitoreoMes: mockData.monitoreoMes,
+      monitoreoTipo: mockData.monitoreoTipo,
+    })
   }
 )
 
@@ -29,14 +33,6 @@ app.get(
       users: mockData.landingPage.users,
       count: mockData.landingPage.users.length,
     })
-  }
-)
-
-app.get(
-  '/api/formas-de-enterarse',
-  [validateSupportOrAdminRole],
-  (req: Request, res: Response): void => {
-    res.json({ formasDeEnterarse: mockData.formasDeEnterarse })
   }
 )
 

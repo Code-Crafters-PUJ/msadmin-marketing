@@ -12,6 +12,7 @@ import mockData from './mockData'
 const app = express()
 
 app.use(cors())
+app.use(express.json()); 
 
 app.get(
   '/api/stats',
@@ -54,10 +55,11 @@ app.post(
         .json({ message: 'Adressee, subject and description are required' })
     }
 
-    res.json({ message: 'Request successfuly registered' })
+    res.json({ message: 'Request successfully registered' })
   }
 )
 
 app.listen(PORT, (): void => {
   console.log(`Server is running on http://localhost:${PORT}`)
 })
+export default app;
